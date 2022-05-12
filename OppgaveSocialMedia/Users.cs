@@ -6,16 +6,40 @@ using System.Threading.Tasks;
 
 namespace OppgaveSocialMedia
 {
-     class Users
+     internal class Users
     {
-        public string userName;
-        public string password;
-        public int friends = 0;
+        // Properties
+        public string UserName { get; set; }
+        public string Email { get; set; }
+        public int Age { get; set; }
+        public List<Users> friends { get; } = new List<Users>();
+
+        // Constructor
+        public Users (string name, string email, int age)
+        {
+            this.Name = name;
+            this.Email = email;
+            this.Age = age;
+        }
+
+        // Methods
+        public void ShowProfile()
+        {
+            Console.WriteLine($"Hei, { Name }!");
+            Console.WriteLine($"Email: { Email }");
+            Console.WriteLine($"Age: { Age }");
+        }
+
+        public void FriendList() // Work in progress
+        {
+            Console.WriteLine("Your friends: ");
+            foreach (Users friend in friends)
+            {
+                Console.WriteLine(friend.Name);
+            }
+
+        }
     }
 
-    public class otherUsers
-    {
-
-        public string name;
-    }
 }
+
