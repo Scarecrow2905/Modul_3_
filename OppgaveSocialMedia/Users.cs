@@ -7,25 +7,25 @@ using System.Threading.Tasks;
 namespace OppgaveSocialMedia
 {
      internal class Users
-    {
+     {
         // Properties
         public string UserName { get; set; }
         public string Email { get; set; }
         public int Age { get; set; }
-        public List<Users> friends { get; } = new List<Users>();
+        public List<Users> Friends { get; } = new List<Users>();
 
         // Constructor
         public Users (string name, string email, int age)
         {
-            this.Name = name;
-            this.Email = email;
-            this.Age = age;
+            UserName = name;
+            Email = email;
+            Age = age;
         }
 
         // Methods
         public void ShowProfile()
         {
-            Console.WriteLine($"Hei, { Name }!");
+            Console.WriteLine($"Hei, { UserName }!");
             Console.WriteLine($"Email: { Email }");
             Console.WriteLine($"Age: { Age }");
         }
@@ -33,13 +33,37 @@ namespace OppgaveSocialMedia
         public void FriendList() // Work in progress
         {
             Console.WriteLine("Your friends: ");
-            foreach (Users friend in friends)
+            foreach (Users Friend in Friends)
             {
-                Console.WriteLine(friend.Name);
+                Console.WriteLine(Friend.UserName);
             }
-
         }
-    }
+        public void ViewFriend(Users Friend)
+        {
+            Console.WriteLine($"din venn{Friend.UserName}");
+            Console.WriteLine($"Age: {Friend.Age}");
+            Console.WriteLine($"email: {Friend.Email}");
+        }
+
+        public void AddFriend(Users Friend)
+        {
+            Friends.Add(Friend);
+            Console.WriteLine($" La til {Friend.UserName}");
+        }
+
+        public void RemoveFriend(Users Friend)
+        {
+            for (int i = 0; i < Friends.Count; i++)
+                {
+                  if (Friend.UserName == Friends[i].UserName)
+                  {
+                        Friends.RemoveAt(i);
+                        Console.WriteLine($"{Friend.UserName} Ble fjernet som venn.");
+                  }
+            }
+        }
+        
+     }
 
 }
 
